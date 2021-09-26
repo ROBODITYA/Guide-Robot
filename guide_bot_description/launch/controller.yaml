@@ -1,0 +1,31 @@
+guide_bot_controller:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers --------------------------------------
+  plate_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: plate_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  lidar_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: lidar_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  forward_right_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: forward_right
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  forward_left_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: forward_left
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  backward_right_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: backward_right
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  backward_left_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: backward_left
+    pid: {p: 100.0, i: 0.01, d: 10.0}

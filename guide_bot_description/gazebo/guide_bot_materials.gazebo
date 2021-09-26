@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<robot name="guide_bot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+<xacro:property name="rubber_color" value="Gazebo/Black" />
+<xacro:property name="rim_color" value="Gazebo/Yellow" />
+<xacro:property name="tab_color" value="Gazebo/White" />
+<xacro:property name="plate_color" value="Gazebo/DarkGrey" />
+<xacro:property name="lipo_color" value="Gazebo/Red" />
+<xacro:property name="camplate_color" value="Gazebo/Green" />
+
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="cover_plate_1">
+  <material>${plate_color}</material>
+</gazebo>
+
+<gazebo reference="lipo_battery_1">
+  <material>${lipo_color}</material>
+</gazebo>
+
+<gazebo reference="holding_stand_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="raspberry_pi_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="tab_s7_1">
+  <material>${tab_color}</material>
+</gazebo>
+
+<gazebo reference="heavy_weight_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="lidar_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="rubber_F_right_1">
+  <material>${rubber_color}</material>
+</gazebo>
+
+<gazebo reference="motor_F_right_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="rim_F_right_1">
+  <material>${rim_color}</material>
+</gazebo>
+
+<gazebo reference="motor_F_left_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="rim_F_left_1">
+  <material>${rim_color}</material>
+</gazebo>
+
+<gazebo reference="rubber_F_left_1">
+  <material>${rubber_color}</material>
+</gazebo>
+
+<gazebo reference="motor_B_right_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="rim_B_right_1">
+  <material>${rim_color}</material>
+</gazebo>
+
+<gazebo reference="rubber_B_right_1">
+  <material>${rubber_color}</material>
+</gazebo>
+
+<gazebo reference="motor_B_left_1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="rim_B_left_1">
+  <material>${rim_color}</material>
+</gazebo>
+
+<gazebo reference="rubber_B_left_1">
+  <material>${rubber_color}</material>
+</gazebo>
+
+<gazebo reference="cam_plate_1">
+  <material>${camplate_color}</material>
+</gazebo>
+
+<gazebo reference="OVA5647_Standard__1__1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="OVA5647_Housing_Standard__1__1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="OVA5647_Lens_FOV__1__1">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="OVA5647_Pigtail_Standard__1__1">
+  <material>${body_color}</material>
+</gazebo>
+
+</robot>

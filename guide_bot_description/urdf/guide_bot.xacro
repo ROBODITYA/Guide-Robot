@@ -1,0 +1,686 @@
+<?xml version="1.0" ?>
+<robot name="guide_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find guide_bot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find guide_bot_description)/urdf/guide_bot.trans" />
+<xacro:include filename="$(find guide_bot_description)/gazebo/guide_bot_materials.gazebo" />
+<xacro:include filename="$(find guide_bot_description)/gazebo/guide_bot_physics.gazebo" />
+<xacro:include filename="$(find guide_bot_description)/gazebo/guide_bot_plugins.gazebo" />
+
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.005937066306400372 0.0034395129407428695 0.021098711501694623"/>
+    <mass value="0.46570766888504633"/>
+    <inertia ixx="0.003317" ixy="-0.0" ixz="-0.0" iyy="0.002476" iyz="0.0" izz="0.005632"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="cover_plate_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.09421412284501307 -6.63900912283499e-06 0.0025561663991068156"/>
+    <mass value="0.2383145201325492"/>
+    <inertia ixx="0.001202" ixy="-0.0" ixz="1e-06" iyy="0.000717" iyz="-0.0" izz="0.001918"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.094063 -0.003441 -0.052131"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/cover_plate_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.094063 -0.003441 -0.052131"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/cover_plate_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lipo_battery_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.00447273732045309 0.016989355078167748 0.01002443884798144"/>
+    <mass value="0.39709699990615055"/>
+    <inertia ixx="5.6e-05" ixy="-1e-06" ixz="1e-06" iyy="0.000186" iyz="0.0" izz="0.000216"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.005937 0.114059 -0.014631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/lipo_battery_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.005937 0.114059 -0.014631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/lipo_battery_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="holding_stand_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.02419137432661947 0.0001027325370686347 0.47241104463566186"/>
+    <mass value="3.923957033322242"/>
+    <inertia ixx="0.402087" ixy="-8e-06" ixz="-0.004529" iyy="0.399383" iyz="-0.000181" izz="0.008279"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.103437 -0.003441 -0.014631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/holding_stand_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.103437 -0.003441 -0.014631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/holding_stand_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="raspberry_pi_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.010902406213332735 -0.03269478613543553 -0.005392278358681248"/>
+    <mass value="0.13472167579144437"/>
+    <inertia ixx="4.1e-05" ixy="-0.0" ixz="-9e-06" iyy="8.3e-05" iyz="0.0" izz="0.000118"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.011874 -0.126882 -0.026762"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/raspberry_pi_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.011874 -0.126882 -0.026762"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/raspberry_pi_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="tab_s7_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0021302691418308047 -0.00024381041894267624 0.0023142964848297254"/>
+    <mass value="2.0707218758033084"/>
+    <inertia ixx="0.013422" ixy="-1.9e-05" ixz="0.002347" iyy="0.004708" iyz="1.7e-05" izz="0.013424"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.020226 -0.003441 -0.970342"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/tab_s7_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.020226 -0.003441 -0.970342"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/tab_s7_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="heavy_weight_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.07999993369359962 2.2222967556006362e-07 0.012308463660548228"/>
+    <mass value="1.7215539604145098"/>
+    <inertia ixx="0.000532" ixy="0.0" ixz="0.0" iyy="0.00376" iyz="0.0" izz="0.004117"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.075937 -0.003441 -0.014631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/heavy_weight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.075937 -0.003441 -0.014631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/heavy_weight_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.00018796116343106073 -1.9621343767296795e-07 0.007419330060174811"/>
+    <mass value="0.041129328341000124"/>
+    <inertia ixx="8e-06" ixy="0.0" ixz="-0.0" iyy="8e-06" iyz="-0.0" izz="1.4e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.018437 -0.003444 -0.241402"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.018437 -0.003444 -0.241402"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rubber_F_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.06318581236425588 0.046932451041852674 0.14915890017988248"/>
+    <mass value="0.009429812150314163"/>
+    <inertia ixx="5e-06" ixy="-0.0" ixz="0.0" iyy="9e-06" iyz="-0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.126372 0.18809 0.114728"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rubber_F_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.126372 0.18809 0.114728"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rubber_F_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_F_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.7006941229340553e-05 0.01663707703714988 0.0005171871725601143"/>
+    <mass value="0.020522858123399677"/>
+    <inertia ixx="2e-06" ixy="0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.063186 0.116559 -0.034631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/motor_F_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.063186 0.116559 -0.034631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/motor_F_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rim_F_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.358365850780965 -0.22639751386308177 -0.028274136735914036"/>
+    <mass value="0.014867393604834456"/>
+    <inertia ixx="4e-06" ixy="0.0" ixz="0.0" iyy="6e-06" iyz="0.0" izz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.421552 -0.084046 -0.062705"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rim_F_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.421552 -0.084046 -0.062705"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rim_F_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_F_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.7006633002146785e-05 -0.016636639859148927 0.0005171885963332762"/>
+    <mass value="0.02052285191762625"/>
+    <inertia ixx="2e-06" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.063186 -0.123441 -0.034631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/motor_F_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.063186 -0.123441 -0.034631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/motor_F_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rim_F_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.09816585078096553 0.2263969583224612 0.04098791865725996"/>
+    <mass value="0.014867393604834456"/>
+    <inertia ixx="4e-06" ixy="-0.0" ixz="-0.0" iyy="6e-06" iyz="0.0" izz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.161352 0.077163 0.006357"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rim_F_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.161352 0.077163 0.006357"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rim_F_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rubber_F_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.06318581236425648 -0.04713200658247327 0.15604088174146552"/>
+    <mass value="0.009429812150314163"/>
+    <inertia ixx="5e-06" ixy="0.0" ixz="-0.0" iyy="9e-06" iyz="-0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.126372 -0.195172 0.12141"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rubber_F_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.126372 -0.195172 0.12141"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rubber_F_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_B_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.7139245802304535e-05 0.01663708431853314 0.0005171885970578216"/>
+    <mass value="0.02052285191762625"/>
+    <inertia ixx="2e-06" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.07506 0.116559 -0.034631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/motor_B_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.07506 0.116559 -0.034631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/motor_B_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rim_B_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.35836569152207653 -0.08815051386308217 0.04058786326408601"/>
+    <mass value="0.014867393604834456"/>
+    <inertia ixx="4e-06" ixy="0.0" ixz="0.0" iyy="6e-06" iyz="0.0" izz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.433426 0.054201 0.006157"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rim_B_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.433426 0.054201 0.006157"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rim_B_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rubber_B_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.07506072993878576 0.04693245104185215 0.14915890017988256"/>
+    <mass value="0.009429812150314163"/>
+    <inertia ixx="5e-06" ixy="-0.0" ixz="0.0" iyy="9e-06" iyz="-0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.150121 0.18809 0.114728"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rubber_B_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.150121 0.18809 0.114728"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rubber_B_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_B_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.7139554029234625e-05 -0.01663663257776557 0.0005171871718351664"/>
+    <mass value="0.020522858123399677"/>
+    <inertia ixx="2e-06" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.07506 -0.123441 -0.034631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/motor_B_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.07506 -0.123441 -0.034631"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/motor_B_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rim_B_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.09816569152207556 0.08815095832246037 -0.028274081342740266"/>
+    <mass value="0.014867393604834456"/>
+    <inertia ixx="4e-06" ixy="-0.0" ixz="-0.0" iyy="6e-06" iyz="0.0" izz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.173226 -0.061083 -0.062705"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rim_B_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.173226 -0.061083 -0.062705"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rim_B_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rubber_B_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.07506072993878435 -0.046932006582474206 0.15604088174146527"/>
+    <mass value="0.009429812150314163"/>
+    <inertia ixx="5e-06" ixy="0.0" ixz="-0.0" iyy="9e-06" iyz="-0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.150121 -0.194972 0.12161"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rubber_B_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.150121 -0.194972 0.12161"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/rubber_B_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="cam_plate_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0005523849230431727 2.2912404553684755e-06 -0.015110952702308833"/>
+    <mass value="0.0014651005047021139"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.044063 -0.003444 -0.215831"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/cam_plate_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.044063 -0.003444 -0.215831"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/cam_plate_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="OVA5647_Standard__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.009766426353858618 0.04785230276157357 -0.0014684748846907625"/>
+    <mass value="0.0001749661004481696"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.034963 0.044556 -0.203231"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/OVA5647_Standard__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.034963 0.044556 -0.203231"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/OVA5647_Standard__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="OVA5647_Housing_Standard__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0013138816491958666 0.045373297206069196 -0.20165616408900733"/>
+    <mass value="0.0009036348611487623"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.048157 0.041929 -0.403487"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/OVA5647_Housing_Standard__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.048157 0.041929 -0.403487"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/OVA5647_Housing_Standard__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="OVA5647_Lens_FOV__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0008013505379504057 0.04835329720606917 -0.20183116408879848"/>
+    <mass value="0.0004846085617861289"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.048247 0.044909 -0.403662"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/OVA5647_Lens_FOV__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.048247 0.044909 -0.403662"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/OVA5647_Lens_FOV__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="OVA5647_Pigtail_Standard__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.010248305172290494 0.04800029720609361 -0.0036192865360158144"/>
+    <mass value="0.00033280958878601315"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.034963 0.044556 -0.215231"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/OVA5647_Pigtail_Standard__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.034963 0.044556 -0.215231"/>
+    <geometry>
+      <mesh filename="package://guide_bot_description/meshes/OVA5647_Pigtail_Standard__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="plate_joint" type="revolute">
+  <origin rpy="0 0 0" xyz="0.094063 0.003441 0.052131"/>
+  <parent link="base_link"/>
+  <child link="cover_plate_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+  <limit effort="100" lower="-1.047198" upper="0.0" velocity="100"/>
+</joint>
+
+<joint name="Rigid15" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.005937 -0.114059 0.014631"/>
+  <parent link="base_link"/>
+  <child link="lipo_battery_1"/>
+</joint>
+
+<joint name="Rigid16" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.103437 0.003441 0.014631"/>
+  <parent link="base_link"/>
+  <child link="holding_stand_1"/>
+</joint>
+
+<joint name="Rigid22" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.011874 0.126882 0.026762"/>
+  <parent link="base_link"/>
+  <child link="raspberry_pi_1"/>
+</joint>
+
+<joint name="Rigid25" type="fixed">
+  <origin rpy="0 0 0" xyz="0.083211 0.0 0.955711"/>
+  <parent link="holding_stand_1"/>
+  <child link="tab_s7_1"/>
+</joint>
+
+<joint name="Rigid26" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0275 0.0 0.0"/>
+  <parent link="holding_stand_1"/>
+  <child link="heavy_weight_1"/>
+</joint>
+
+<joint name="lidar_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.085 3e-06 0.226771"/>
+  <parent link="holding_stand_1"/>
+  <child link="lidar_1"/>
+  <axis xyz="-0.0 0.0 1.0"/>
+</joint>
+
+<joint name="Rigid33" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.29518 -0.272136 -0.177433"/>
+  <parent link="rim_F_right_1"/>
+  <child link="rubber_F_right_1"/>
+</joint>
+
+<joint name="Rigid34" type="fixed">
+  <origin rpy="0 0 0" xyz="0.063186 -0.116559 0.034631"/>
+  <parent link="base_link"/>
+  <child link="motor_F_right_1"/>
+</joint>
+
+<joint name="forward_right" type="continuous">
+  <origin rpy="0 0 0" xyz="0.358366 0.200605 0.028074"/>
+  <parent link="motor_F_right_1"/>
+  <child link="rim_F_right_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Rigid36" type="fixed">
+  <origin rpy="0 0 0" xyz="0.063186 0.123441 0.034631"/>
+  <parent link="base_link"/>
+  <child link="motor_F_left_1"/>
+</joint>
+
+<joint name="forward_left" type="continuous">
+  <origin rpy="0 0 0" xyz="0.098166 -0.200604 -0.040988"/>
+  <parent link="motor_F_left_1"/>
+  <child link="rim_F_left_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid38" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.03498 0.272335 -0.115053"/>
+  <parent link="rim_F_left_1"/>
+  <child link="rubber_F_left_1"/>
+</joint>
+
+<joint name="Rigid39" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.07506 -0.116559 0.034631"/>
+  <parent link="base_link"/>
+  <child link="motor_B_right_1"/>
+</joint>
+
+<joint name="backward_right" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.358366 0.062358 -0.040788"/>
+  <parent link="motor_B_right_1"/>
+  <child link="rim_B_right_1"/>
+  <axis xyz="-0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Rigid41" type="fixed">
+  <origin rpy="0 0 0" xyz="0.283305 -0.133889 -0.108571"/>
+  <parent link="rim_B_right_1"/>
+  <child link="rubber_B_right_1"/>
+</joint>
+
+<joint name="Rigid42" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.07506 0.123441 0.034631"/>
+  <parent link="base_link"/>
+  <child link="motor_B_left_1"/>
+</joint>
+
+<joint name="backward_left" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.098166 -0.062358 0.028074"/>
+  <parent link="motor_B_left_1"/>
+  <child link="rim_B_left_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid44" type="fixed">
+  <origin rpy="0 0 0" xyz="0.023105 0.133889 -0.184315"/>
+  <parent link="rim_B_left_1"/>
+  <child link="rubber_B_left_1"/>
+</joint>
+
+<joint name="Rigid45" type="fixed">
+  <origin rpy="0 0 0" xyz="0.1475 3e-06 0.2012"/>
+  <parent link="holding_stand_1"/>
+  <child link="cam_plate_1"/>
+</joint>
+
+<joint name="Rigid49" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0091 -0.048 -0.0126"/>
+  <parent link="cam_plate_1"/>
+  <child link="OVA5647_Standard__1__1"/>
+</joint>
+
+<joint name="Rigid50" type="fixed">
+  <origin rpy="0 0 0" xyz="0.013194 0.002627 0.200256"/>
+  <parent link="OVA5647_Standard__1__1"/>
+  <child link="OVA5647_Housing_Standard__1__1"/>
+</joint>
+
+<joint name="cam_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="9e-05 -0.00298 0.000175"/>
+  <parent link="OVA5647_Housing_Standard__1__1"/>
+  <child link="OVA5647_Lens_FOV__1__1"/>
+</joint>
+
+<joint name="Rigid52" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0091 -0.048 -0.0006"/>
+  <parent link="cam_plate_1"/>
+  <child link="OVA5647_Pigtail_Standard__1__1"/>
+</joint>
+
+</robot>
